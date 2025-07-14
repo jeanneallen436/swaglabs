@@ -1,0 +1,24 @@
+// ?? null coalescing operator -- returns first non-null value from a sequence
+                // the search results will only be a list if tolist added at end
+                // without tolist, result is an IEnumerable (generic collection type)
+            // .. collection expression like a spread operator in js instead of ToList
+
+Design patterns -- most use interface programming
+
+Clean Code, Clean Architecture...
+
+Learn and Code class through ITT
+
+SOLID principles
+
+Multiprocess, multithreading, asynchronous, await
+
+Database transactions (locking access until something is done)
+
+Transient, Scoped, Singleton...
+
+UML
+
+Reflection -- good for unit testing, can look for private methods
+
+template method, -- try reflection
