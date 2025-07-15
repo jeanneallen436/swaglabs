@@ -30,3 +30,5 @@ cypress/screenshots
 js/*.js
 
 RTM_TemplateGuru99.xlsx
+
+.env
