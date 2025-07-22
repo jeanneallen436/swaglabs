@@ -206,7 +206,8 @@ When to stop testing -- when testing period is over (schedule)
 **confirmation testing**: confirms orig defect is fixed
 **regression testing**: nothing that was working was broken by changes (perform an impact analysis to see which parts of system were affected by change)
 
-CI/CD pipelines can be set up to do impact analyses -- 
+CI/CD pipelines can be set up to do impact analyses --
+
 1. git diff
 2. dependency mapping to see affected components (map unit tests to files by placing inside same directories as files they test)
 3. code coverage data (Cypress coverage)
@@ -216,6 +217,7 @@ CI/CD pipelines can be set up to do impact analyses --
 # Static Testing:
 
 ## keywords
+
 **anomaly**: deviation from reqs, docs, user standards, perception/experience
 **dynamic testing**: execute software to test
 **formal review**: review that follows defined process with documented procedures and reqs-- entry and exit criteria, documented results, systematic approach
@@ -228,7 +230,9 @@ CI/CD pipelines can be set up to do impact analyses --
 **walkthrough**: author walks you through the doc, sharing and understanding info
 
 ## Terms grouped according to heirarchy:
+
 Here are the testing terms grouped in meaningful categories:
+
 ### Testing Approaches (fundamental methods)
 
 static testing - Testing without executing the software
@@ -240,6 +244,7 @@ static analysis - Automated examination of code/artifacts without execution
 review - Human evaluation of products or project status
 
 ### Review Types (by formality level)
+
 #### Most Formal:
 
 inspection - Most formal review with defined process, moderator, entry/exit criteria, and metrics
@@ -268,6 +273,7 @@ Dynamic testing stands alone as the execution-based approach
 This grouping shows the hierarchy from broad testing approaches down to specific review types, and highlights that static testing has both automated (static analysis) and human (review) components.
 
 ## Notes:
+
 - Static analysis tools are stuff like linters, CI pipelines (e.g., that test if code still compiles)
 - looking at code for quality, structure, readability, completeness, correctness, testability, consistency.
 - work products needs a structure/model and/or reqs against which it can be checked
@@ -276,6 +282,7 @@ This grouping shows the hierarchy from broad testing approaches down to specific
 - static analysis tools might predict possible code paths but won't run them
 
 ### Review roles:
+
 - Manager
 - Author
 - Moderator
@@ -284,6 +291,7 @@ This grouping shows the hierarchy from broad testing approaches down to specific
 - Review Leader
 
 ### Review Success Factors
+
 - clear objectives going in
 - appropriate review type
 - review small chunks
@@ -297,24 +305,156 @@ This grouping shows the hierarchy from broad testing approaches down to specific
 # Test Analysis and Design
 
 ## keywords
-**acceptance criteria**:   
-**acceptance test-driven development**:   
-**black-box test technique**:   
-**boundary value analysis**:   
-**branch coverage**:   
-**checklist-based testing**:   
-**collaboration-based test approach**:   
-**coverage**:   
-**coverage item**:   
-**decision table testing**:   
-**equivalence partitioning**:   
-**error guessing**:   
-**experience-based test technique**:   
-**exploratory testing**:   
-**state transition testing**:   
-**statement coverage**:   
-**test technique**:   
-**white-box test technique**:   
 
+**acceptance criteria**: Conditions that and implementation of the user story must meet  
+**acceptance test-driven development**: collaborative, test-first approach; tests created before code is even written
+**black-box test technique**: analysis of behavior of test object, no ref to internal structure or code  
+**boundary value analysis**: black box, exercises boundaries of ordered partitions; 2-value (checks boundary val and closest neighbor); 3-value (checks boundary val and closest neighbor on both sides)  
+**branch coverage**: code can branch at if/else statements, loops, exception handling; this coverage tries to exercise all paths through code (unconditional and conditional)
+**checklist-based testing**: basically, someone else does the error guessing and then a tester writes tests based on those checklist items; often phrased as questions; must be regularly updated; advantage is flexibility because checks are higher level, but disadvantage is repeatability  
+**collaboration-based test approach**: defect avoidance by collab and communication  
+**coverage**:  
+**coverage item**:  
+**decision table testing**: black box, test implementations of reqs that specify how different combos on inputs result in diff combos of outcomes  
+**equivalence partitioning**: black box, partitions data inputs/outputs/config items/internal vals/time vals/params into groups that behave the same -- a defect caused by one piece of data in a partition should appear for all others as well  
+**error guessing**: guess at possible errors, defects and failures and test those (based on past app behavior, common errors for that type of app, errors that show up commonly in because of developers); looks at errors related to: input, output, logic, computation, interfaces, or data  
+**experience-based test technique**: rely on knowledge and experience of tester  
+**exploratory testing**: tester comes up with tests while interacting with test object, often done in "sessions" with pre-defined duration; exploration is guided by test charter  
+**state transition testing**: black box, shows possible states and tests transistions between them, event driven; rows represent states, cols represent transitions  
+**statement coverage**: Tries to test all statements, which may not mean all branches  
+**test technique**:  
+**white-box test technique**: structure-based techniques, internal struct and processing, created after software is designed, run on execution; strength is discovering how software works when spec is out of date; weakness is it misses any defects of omission
 
+## Notes
+
+- **Each Choice coverage**: type of equivalence partitioning that requires test cases to exercise each partition from each set of partitions at least once, does not take into account combos of partitions
+
+- **Decision Table Notation**: The notation for conditions is as follows: “T” (true) means that the condition is satisfied. “F” (false) means
+  that the condition is not satisfied. “–” means that the value of the condition is irrelevant for the action
+  outcome. “N/A” means that the condition is infeasible for a given rule. For actions: “X” means that the
+  action should occur. Blank means that the action should not occur. Other notations may also be used
+
+- **Coverage for State transition testing**: all states coverage, valid transitions coverage, all transitions coverage
+
+### White box coverage testing techniques:
+
+- statement testing
+- branch testing
+- API testing
+- neuron coverage in neural network testing
+
+### Experience-based test techniques:
+
+- Error guessing
+  -- fault attacks: generate list of possible issues
+- Exploratory testing
+- Checklist-based testing
+
+### Collaboration-based approaches
+
+- User Story writing: card, coversation, confirmation; should be Independent, Negotiable, Valuable, Estimable, Small, Testable (INVEST); acceptance criteria should define the complete behavior of the feature.
+
+#### Formats
+
+- scenerio-oriented: (given/when/then)
+- rule-oriented (checklist, input-output mapping)
+
+### Acceptance Criteria
+
+- Conditions that and implementation of the user story must meet. Used to:
+
+* define user story scope,
+* reach consensus
+* describe positive and negative scenerios,
+* serve as basis for acceptance testing
+* allow planning and estimation
+
+## Acceptance Test-driven Development (ATDD)
+
+- Discuss, distill, develop, demo
+- TDD focuses on unit tests and technical correctness/ ATDD focuses on verifying business reqs
+
+# Managing Test Activities
+
+## Test Strategy & Planning
+
+Test Strategy - High-level organizational approach
+Test Approach - Project-specific implementation of strategy
+Test Planning - Activity of defining test objectives and approach
+Test Plan - Document describing test objectives, approach, resources, and schedule
+
+## Test Models & Frameworks
+
+Test Pyramid - Model showing testing levels (unit → integration → system)
+Testing Quadrants - Four-quadrant model (business/technology-facing, support/critique)
+
+## Test Execution & Control
+
+Entry Criteria - Conditions required to start testing (resources, testware, init quality of test object)
+Exit Criteria - Conditions required to complete testing (meaures of thoroughness, checklist complete, or running out of time/budget)
+Test Monitoring - Ongoing tracking of test progress and metrics
+Test Control - Taking corrective actions based on monitoring data
+
+## Test Reporting
+
+Test Progress Report - Ongoing status during testing periods
+Test Completion Report - Final summary at testing milestones
+
+## Risk Management Framework
+
+### Risk Process Activities:
+
+Risk Identification - Finding and recognizing risks
+Risk Analysis - Assessing likelihood and impact
+Risk Assessment - Overall process of identification + analysis
+Risk Control - Making decisions and implementing measures
+Risk Mitigation - Taking action to reduce risk
+Risk Monitoring - Ongoing tracking of risks
+
+### Risk Components:
+
+Risk - Factor that could cause negative consequences
+Risk Level - Measure combining likelihood and impact
+Risk Management - Coordinated activities to direct and control risk
+
+### Risk Types:
+
+Product Risk - Risks related to the software being tested
+Project Risk - Risks related to project management and resources
+Risk-based Testing - Testing approach prioritized by risk analysis
+
+### Defect Management
+
+Defect Management - Complete process of handling defects
+Defect Report - Documentation of individual defects
+
+This organization shows the logical flow from strategic planning through execution and control, with risk management and defect management as supporting processes throughout.
+
+## Notes
+
+### Test Plan
+
+- context, assumptions/constraints, people involved and how, forms and frequency of communication, risks, approaches, budget/schedule
+
+### Estimation techniques
+
+Based on:
+
+- ratios based on previous projects
+- extrapolation based on current point in current project
+- Wideband Delphi (group of experts making estimates separately (wideband) and comparing in various rounds (delphi), technique for harnessing collective wisdom)
+- Three-point estimation: most optimistic, most likely, most pessimistic. final estimates based on arithmetic mean. `E = (a + 4*m + b) / 6` -- likely is weighted; standard deviation can be calculated (`(b-a)/6)
+
+## Prioritization:
+
+- Risk-based priority, Coverage-based, Req-based (can be thrown off by dependencies)
+
+## Test Pyramid:
+
+- shows different levels of granularity/execution time (least tests at UI/e2e level, more at service/integration level, most at unit level)
+
+## Testing Quadrants
+
+[testing quadrants image](./testing_quadrants.png)
+Image curtesy of OnPath "[What are Agile Testing Quadrants (and are they still relevant)?](https://www.onpathtesting.com/blog/what-are-agile-testing-quadrants)" by Brian Borg
 
